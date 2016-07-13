@@ -1,0 +1,22 @@
+<p>
+  <strong>Match:</strong>
+  <%= @sanitize.match %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @sanitize.result %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sanitize.description %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @sanitize.status %>
+</p>
+
+<%= link_to (t "edit"), edit_sanitize_path(@sanitize), :class => "btn btn-default" %>
+<%= link_to (t "back"), sanitizes_path, :class => "btn btn-default" %>

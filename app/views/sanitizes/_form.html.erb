@@ -1,0 +1,15 @@
+<%= simple_form_for(@sanitize) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => "submit pull-right" %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :match, :as => :regex, :placeholder => "Input Regular Expression here, don't need slash before and after" %>
+    <%= f.input :result, :placeholder => "The result you want to see" %>
+    <%= f.input :description, :placeholder => "Explain your rule here" %>
+    <%= f.select(:status, Sanitize.statuses.keys.map {|status|[status.titleize, status]}) %>
+  </div>
+
+<% end %>
