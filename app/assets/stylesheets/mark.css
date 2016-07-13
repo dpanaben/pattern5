@@ -1,0 +1,9 @@
+span.expect{
+    background: orange;
+    color: black;
+}
+
+span.result{
+    background: yellow;
+    color: black;
+}

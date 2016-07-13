@@ -1,0 +1,88 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  signin: "Sign in"
+  signout: "Sign out"
+  signingoogle: "Google"
+  rulepanel: "To Rule"
+  about: "About"
+  brew: "BREW"
+  back: "Back"
+  edit: "E"
+  destroy: "D"
+  newbutton: "New Post"
+  post:
+    version: "Version"
+    title: "Title"
+    content: "Content"
+    page:
+      index:
+        title: "Listing Posts"
+      edit:
+        title: "Edit Post"
+        history: "History"
+      show:
+        title: "Showing Post"
+  sanitize:
+    status: "Status"
+    match: "Match"
+    result: "Result"
+    description: "Description"
+    page:
+      index:
+        title: "Listing Sanitize"
+      edit:
+        title: "Edit Sanitize"
+zh:
+  signin: "登入"
+  signout: "登出"
+  signingoogle: "谷哥登入"
+  rulepanel: "規則管理"
+  about: "關於這裏"
+  brew: "洗文章囉!"
+  back: "回上一頁"
+  edit: "編"
+  destroy: "刪"
+  post:
+    newbutton: "新增文章"
+    version: "版本"
+    title: "文章主題"
+    content: "文章內容"
+    page:
+      index:
+        title: "所有文章"
+      edit:
+        title: "編輯文章"
+        history: "歷史記錄"
+      show:
+        title: "顯示文章"
+  sanitize:
+    newbutton: "新增刷文機"
+    status: "狀態"
+    match: '比對規則'
+    result: '變更為'
+    description: '規則說明'
+    page:
+      index:
+        title: "顯示刷文機"
+      edit:
+        title: "編輯刷文機"

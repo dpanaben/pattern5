@@ -1,0 +1,114 @@
+en:
+  helpers:
+    submit:
+      post:
+        create: "Add %{model}"
+        update: "Save Changes"
+      sanitize:
+        create: "Add %{model}"
+        update: "Save Changes"
+  activerecord:
+    models:
+      post: 'Post'
+      sanitize: 'Sanitize'
+    attributes:
+      post:
+        title: 'Title'
+        content: 'Content'
+      sanitize:
+        match: 'Match'
+        result: 'Result'
+        description: 'Description'
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "Can't be blank"
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Please review the problems below:"
+    # Examples
+    labels:
+      defaults:
+        password: 'Password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
+    include_blanks:
+      defaults:
+        age: 'Rather not say'
+    prompts:
+      defaults:
+        age: 'Select your age'
+zh:
+  helpers:
+    submit:
+      post:
+        create: "加入 %{model}"
+        update: "儲存變更"
+      sanitize:
+        create: "加入 %{model}"
+        update: "儲存變更"
+  activerecord:
+    models:
+      post: '文章'
+      sanitize: '刷文機'
+    attributes:
+      post:
+        title: '主題'
+        content: '內容'
+      sanitize:
+        match: '比對規則'
+        result: '變更為'
+        description: '規則說明'
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: "不能空白"
+  simple_form:
+    "yes": '是的!'
+    "no": '不!'
+    required:
+      text: '必填'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "請檢查下列錯誤："
+    # Examples
+    labels:
+      defaults:
+        password: 'Password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
+    include_blanks:
+      defaults:
+        age: 'Rather not say'
+    prompts:
+      defaults:
+        age: 'Select your age'

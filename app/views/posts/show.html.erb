@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1><%=(t "post.page.show.title")%></h1>
+      <%= link_to (t "back"), posts_path, :class => "btn btn-default pull-right" %>
+      <%= link_to (t "edit"), edit_post_path(@post), :class => "btn btn-default pull-right" %>
+      <p>
+        <strong><%=(t "post.title")%>: </strong>
+        <%= @post.title %>
+      </p>
+      <p>
+        <strong><%=(t "post.content")%>: </strong>
+        <%= simple_format(@post.content) %>
+      </p>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+</div>

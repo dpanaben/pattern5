@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><%=(t "post.page.index.title")%></h1>
+      <%= link_to (t "post.newbutton"), new_post_path, :class => "btn btn-primary pull-right" %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= (t "post.title")%></th>
+            <th><%= (t "post.content")%></th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.reverse.each do |post| %>
+            <tr>
+              <td><%= link_to truncate(post.title), post %></td>
+              <td><%= truncate(post.content) %></td>
+              <td><%= link_to (t "edit"), edit_post_path(post) %></td>
+              <td><%= link_to (t "destroy"), post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
