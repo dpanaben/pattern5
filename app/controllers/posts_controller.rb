@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_active_sanitize, only: [:index, :show, :brew, :result]
 
   # GET /posts
   # GET /posts.json
@@ -61,7 +62,27 @@ class PostsController < ApplicationController
     end
   end
 
+  def undo
+    @post = @post.previous_version
+    @post.save
+    redirect_to @post, notice: 'Congrats! The post has been recovered to the last version!'
+  end
+
+  def brew
+    @post.replacesomething
+    @post.save
+    redirect_to result_post_path, notice: 'Your post has been brewed!'
+  end
+
+  def result
+  end
+
+
   private
+    def get_active_sanitize
+      @sanitizes = Sanitize.on.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])

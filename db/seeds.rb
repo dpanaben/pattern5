@@ -18,8 +18,8 @@ sanitize9 = Sanitize.new(:match => '\s\?|\?|\?\s', :result => '？', :descriptio
 sanitize10 = Sanitize.new(:match => '\.{2,}', :result => '……', :description => '連續的半形句點改成連續兩組省略號…')
 sanitize11 = Sanitize.new(:match => '　', :result => '   ', :description => '全形空白代換成三個半形空白')
 sanitize12 = Sanitize.new(:match => '\.$|\.\s', :result => '。', :description => '段落尾逗點改句號')
-sanitize13 = Sanitize.new(:match => '(\w) (?=\w)', :result => '\1', :description => '處理空白--兩個英數字中間的空白會留著')
-sanitize14 = Sanitize.new(:match => '(\W) (?=\w)', :result => '\1', :description => '處理空白--前面不是英數字，中間的空白刪掉')
+sanitize13 = Sanitize.new(:match => '(?<=\W)\s*\.\s*(?=\W)', :result => '。', :description => '半形點號若其前後皆非英數字時，取代成全形句號')
+sanitize14 = Sanitize.new(:match => ' (?=\/|／|[\u4e00-\u9fa5])', :result => '', :description => '處理空白--空白後面接反斜線/英數字/中文的話就把空白去掉')
 post1 = Post.new(:title => 'FortiWeb-1000C與3000C', :content => '
  
 FortiWeb-1000C與3000C, 採用最新的FortiWeb 4.0 MR1系統韌體, 能提供更佳的部署彈性與安全性。

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Showing Post</h1>
+      <!-- <%= link_to 'BREW', brew_post_path(@post), method: :post, data: { confirm: '確認後將會依照設定好的規則一個一個重新取代成新的字元或字串' }, :class => "btn btn-primary pull-right" %> -->
+      <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-default pull-right" %>
+      <%= link_to (t "back"), @post, :class => "btn btn-default pull-right" %>
+      <p>
+        <strong>Title:</strong>
+        <%= @post.title %>
+      </p>
+      <p>
+        <strong>Content:</strong>
+        <%= simple_format(myhighlight_result(@post.content)) %>
+      </p>
+    </div>
+    <div class="col-md-6">
+      <%= render 'sanitize'%>
+    </div>
+  </div>
+</div>

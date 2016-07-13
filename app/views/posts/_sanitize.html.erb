@@ -1,0 +1,20 @@
+<h1><%=(t "sanitize.page.index.title")%></h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th><%=(t "sanitize.match")%></th>
+      <th><%=(t "sanitize.result")%></th>
+      <th><%=(t "sanitize.description")%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sanitizes.reverse.each do |sanitize| %>
+      <tr>
+        <td><%= sanitize.description %></td>
+        <td><%= sanitize.match %></td>
+        <td><%= sanitize.result %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

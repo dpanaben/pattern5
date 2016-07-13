@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <h1><%=(t "post.page.show.title")%></h1>
+      <%= link_to (t "brew"), brew_post_path(@post), :class => "btn submit pull-right", method: :post, data: { confirm: '確認後將會依照設定好的規則一個一個重新取代成新的字元或字串' } %>
       <%= link_to (t "back"), posts_path, :class => "btn btn-default pull-right" %>
       <%= link_to (t "edit"), edit_post_path(@post), :class => "btn btn-default pull-right" %>
       <p>
@@ -10,10 +11,11 @@
       </p>
       <p>
         <strong><%=(t "post.content")%>: </strong>
-        <%= simple_format(@post.content) %>
+        <%= simple_format(myhighlight(@post.content)) %>
       </p>
     </div>
     <div class="col-md-6">
+      <%= render 'sanitize'%>
     </div>
   </div>
 </div>
