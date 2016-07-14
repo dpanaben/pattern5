@@ -9,7 +9,7 @@
   </li>
 <% else %>
   <li class="dropdown">
-    <%= link_to new_user_session_path, clas: "dropdown-toggle" do %>
+    <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
       <%= (t "signin") %>
     <% end %>
     <ul class="dropdown-menu">
@@ -21,5 +21,4 @@
     </ul>
   </li>
   <li><%= link_to (t "signup"), new_user_registration_path %></li>
-
 <% end %>
