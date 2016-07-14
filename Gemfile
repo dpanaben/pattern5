@@ -64,6 +64,7 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-facebook"
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
+gem 'omniauth-github'
 
 #debug
 gem 'better_errors'
