@@ -22,7 +22,7 @@
 en:
   signin: "Sign in"
   signout: "Sign out"
-  signingoogle: "Google"
+  signup: "Sign up"
   rulepanel: "To Rule"
   about: "About"
   brew: "BREW"
@@ -59,7 +59,7 @@ en:
 zh:
   signin: "登入"
   signout: "登出"
-  signingoogle: "谷哥登入"
+  signup: "註冊"
   rulepanel: "規則管理"
   about: "關於這裏"
   brew: "洗文章囉!"
