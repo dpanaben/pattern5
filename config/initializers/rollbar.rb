@@ -1,4 +1,15 @@
 Rollbar.configure do |config|
+  # common gem configuration
+  # ...
+  config.js_enabled = true
+  config.js_options = {
+    accessToken: "80acbb1d5ab141a4bc0095c871734677",
+    captureUncaught: true,
+    payload: {
+      environment: "production"
+    }
+  }
+
   # Without configuration, Rollbar is enabled in all environments.
   # To disable in specific environments, set config.enabled=false.
 
