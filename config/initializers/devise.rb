@@ -252,7 +252,7 @@ Devise.setup do |config|
   #在此處設定的provider會自動產生path出現在login畫面底下
   config.omniauth :twitter, Rails.application.secrets.omniauth_provider_key_t, Rails.application.secrets.omniauth_provider_secret_t
   config.omniauth :google_oauth2, Rails.application.secrets.omniauth_provider_key_g, Rails.application.secrets.omniauth_provider_secret_g
-  config.omniauth :facebook, Rails.application.secrets.omniauth_provider_key_f, Rails.application.secrets.omniauth_provider_secret_f
+  config.omniauth :facebook, Rails.application.secrets.omniauth_provider_key_f, Rails.application.secrets.omniauth_provider_secret_f, :scope => 'email'
   config.omniauth :tumblr, Rails.application.secrets.omniauth_provider_key_tumblr, Rails.application.secrets.omniauth_provider_secret_tumblr
 
   # ==> Warden configuration
