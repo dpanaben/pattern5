@@ -1,7 +1,25 @@
 <% if user_signed_in? %>
-  <li><%= link_to current_user.name, edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <li class="dropdown">
+    <%= link_to edit_user_registration_path, class: "dropdown-toggle" do %>
+      <%= current_user.name %>
+    <% end %>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+    </ul>
+  </li>
 <% else %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li class="dropdown">
+    <%= link_to new_user_session_path, clas: "dropdown-toggle" do %>
+      Sign in
+    <% end %>
+    <ul class="dropdown-menu">
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <li><%= link_to "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %></li>
+        <% end -%>
+      <% end -%>
+    </ul>
+  </li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
+
 <% end %>
