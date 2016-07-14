@@ -1,6 +1,5 @@
 <h1>Editing Sanitize</h1>
 
-<%= render 'form' %>
+<%= link_to (t "back"), sanitizes_path, :class => "btn btn-default pull-right" %>
 
-<%= link_to 'Show', @sanitize, :class => "btn btn-default" %>
-<%= link_to (t "back"), sanitizes_path, :class => "btn btn-default" %>
+<%= render 'form' %>

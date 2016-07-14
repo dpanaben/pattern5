@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, except: [:index, :new, :create]
   before_action :get_active_sanitize, only: [:index, :show, :brew, :result]
 
   # GET /posts
@@ -85,7 +85,11 @@ class PostsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by(id: params[:id])
+      if @post.nil?
+        @posts = Post.all
+        redirect_to root_url, notice: "No post was found!"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

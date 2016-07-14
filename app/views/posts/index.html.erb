@@ -3,9 +3,10 @@
     <div class="col-md-12">
       <h1><%=(t "post.page.index.title")%></h1>
       <%= link_to (t "post.newbutton"), new_post_path, :class => "btn btn-primary pull-right" %>
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
+            <th><%= (t "post.version")%></th>
             <th><%= (t "post.title")%></th>
             <th><%= (t "post.content")%></th>
             <th colspan="2"></th>
@@ -14,6 +15,7 @@
         <tbody>
           <% @posts.reverse.each do |post| %>
             <tr>
+              <td><%= post.versions.size%></td>
               <td><%= link_to truncate(post.title), post %></td>
               <td><%= truncate(post.content) %></td>
               <td><%= link_to (t "edit"), edit_post_path(post) %></td>

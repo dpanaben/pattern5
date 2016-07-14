@@ -31,7 +31,7 @@ en:
   destroy: "D"
   newbutton: "New Post"
   post:
-    version: "Version"
+    version: "Versions"
     title: "Title"
     content: "Content"
     page:
@@ -42,6 +42,8 @@ en:
         history: "History"
       show:
         title: "Showing Post"
+      new:
+        title: "New Post"
   sanitize:
     status: "Status"
     match: "Match"
@@ -52,6 +54,8 @@ en:
         title: "Listing Sanitize"
       edit:
         title: "Edit Sanitize"
+      new:
+        title: "New Sanitize"
 zh:
   signin: "登入"
   signout: "登出"
@@ -64,7 +68,7 @@ zh:
   destroy: "刪"
   post:
     newbutton: "新增文章"
-    version: "版本"
+    version: "版本數"
     title: "文章主題"
     content: "文章內容"
     page:
@@ -75,6 +79,8 @@ zh:
         history: "歷史記錄"
       show:
         title: "顯示文章"
+      new:
+        title: "新文章"
   sanitize:
     newbutton: "新增刷文機"
     status: "狀態"
@@ -86,3 +92,5 @@ zh:
         title: "顯示刷文機"
       edit:
         title: "編輯刷文機"
+      new:
+        title: "新刷文機"

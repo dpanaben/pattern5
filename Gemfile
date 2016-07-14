@@ -3,14 +3,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
+
 # Use sqlite3 as the database for Active Record
-group :development do
-  gem 'sqlite3'
-end
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -53,21 +51,46 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+#layout css
 gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'simple_form'
+gem "will_paginate"
 
+#user authentication
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem "omniauth-facebook"
+gem 'omniauth-twitter'
+gem 'omniauth-tumblr'
 
+#debug
 gem 'better_errors'
 gem 'pry-rails'
 gem 'pry-rescue'
 gem 'rubocop'
 
+#history
 gem 'paper_trail'
 
 gem 'rollbar' #error tracking
 gem 'newrelic_rpm' #monitoring
 gem 'domp'
+gem "rails-erd" #ER drawing
+
+group :development do #for N+1 queries and blah blah
+  gem 'rack-mini-profiler'
+  gem "bullet"
+  gem "ruby-growl"
+  gem "xmpp4r"
+  gem 'letter_opener'
+  gem "airbrake"
+end
+
+#image upload aws
+gem "rmagick"
+gem "mini_magick"
+gem "carrierwave"
+gem "carrierwave-meta"
+gem "fog-aws"

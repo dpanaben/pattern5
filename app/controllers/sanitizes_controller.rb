@@ -68,8 +68,15 @@ class SanitizesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_sanitize
-      @sanitize = Sanitize.find(params[:id])
+      # @sanitize = Sanitize.find(params[:id])
+      @sanitize = Sanitize.find_by(id: params[:id])
+      if @sanitize.nil?
+        @sanitizes = Sanitize.all
+        redirect_to sanitizes_url, notice: "No pattern was found!"
+      end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
