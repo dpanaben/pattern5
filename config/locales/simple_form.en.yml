@@ -25,6 +25,12 @@ en:
           attributes:
             title:
               blank: "Can't be blank"
+        user:
+          attributes:
+            email:
+              blank: "Can't be blank"
+            password:
+              blank: "Can't be blank"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -82,6 +88,12 @@ zh:
           attributes:
             title:
               blank: "不能空白"
+        user:
+          attributes:
+            email:
+              blank: "不能空白"
+            password:
+              blank: "不能空白"
   simple_form:
     "yes": '是的!'
     "no": '不!'
@@ -96,16 +108,17 @@ zh:
     # Examples
     labels:
       defaults:
-        password: 'Password'
+        name: '用戶名稱'
+        password: '密碼'
       user:
         new:
-          email: 'E-mail to sign in.'
+          email: '電子郵件'
         edit:
-          email: 'E-mail.'
+          email: '電子郵件'
     hints:
       defaults:
         username: 'User name to sign in.'
-        password: 'No special characters, please.'
+        password: '拜託不要設定太簡單的密碼'
     include_blanks:
       defaults:
         age: 'Rather not say'
