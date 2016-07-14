@@ -254,7 +254,7 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, Rails.application.secrets.omniauth_provider_key_g, Rails.application.secrets.omniauth_provider_secret_g
   config.omniauth :facebook, Rails.application.secrets.omniauth_provider_key_f, Rails.application.secrets.omniauth_provider_secret_f, scope: "email"
   config.omniauth :tumblr, Rails.application.secrets.omniauth_provider_key_tumblr, Rails.application.secrets.omniauth_provider_secret_tumblr
-  config.omniauth :github, Rails.application.secrets.omniauth_provider_key_github, Rails.application.secrets.omniauth_provider_secret_github, scope: "user,repo,gist"
+  config.omniauth :github, Rails.application.secrets.omniauth_provider_key_github, Rails.application.secrets.omniauth_provider_secret_github, scope: "user:email"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
