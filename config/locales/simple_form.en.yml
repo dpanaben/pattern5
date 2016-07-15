@@ -15,6 +15,7 @@ en:
       post:
         title: 'Title'
         content: 'Content'
+        created_at: 'Created At'
       sanitize:
         match: 'Match'
         result: 'Result'
@@ -78,6 +79,7 @@ zh:
       post:
         title: '主題'
         content: '內容'
+        created_at: '建立'
       sanitize:
         match: '比對規則'
         result: '變更為'

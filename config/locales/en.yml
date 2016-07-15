@@ -36,6 +36,8 @@ en:
     title: "Title"
     content: "Content"
     author: "Author"
+    created_at: "Created At"
+    updated_at: "Updated At"
     page:
       index:
         title: "Listing Posts"
@@ -75,6 +77,8 @@ zh:
     title: "文章主題"
     content: "文章內容"
     author: "作者"
+    created_at: "建立於"
+    updated_at: "上次更新"
     page:
       index:
         title: "所有文章"
