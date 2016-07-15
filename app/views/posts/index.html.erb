@@ -6,6 +6,9 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <% if current_user && current_user.admin? %>
+              <th><%= (t "post.id") %></th>
+            <% end %>
             <th><%= (t "post.author")%></th>
             <th><%= (t "post.title")%></th>
             <th><%= (t "post.content")%></th>
@@ -17,6 +20,9 @@
         <tbody>
           <% @posts.reverse.each do |post| %>
             <tr>
+              <% if current_user && current_user.admin? %>
+                <th><%= post.id %></th>
+              <% end %>
               <td><%= post.author.name%></td>
               <td><%= link_to truncate(post.title), post %></td>
               <td><%= truncate(post.content) %></td>
