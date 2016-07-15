@@ -27,7 +27,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -53,12 +53,15 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #layout css
 gem 'bootstrap-sass'
+gem 'foundation-rails', '~> 5.5'
 gem 'high_voltage'
 gem 'simple_form'
 gem "will_paginate"
 
 #user authentication
-gem 'devise'
+gem 'devise' #authentication management
+gem 'pundit' #authorization management
+gem 'rolify' #role management
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem "omniauth-facebook"
@@ -77,7 +80,6 @@ gem 'paper_trail'
 
 gem 'rollbar' #error tracking
 gem 'newrelic_rpm' #monitoring
-gem 'domp'
 gem "rails-erd" #ER drawing
 
 group :development do #for N+1 queries and blah blah
@@ -95,3 +97,6 @@ gem "mini_magick"
 gem "carrierwave"
 gem "carrierwave-meta"
 gem "fog-aws"
+
+#mailfunction
+gem 'gibbon' #Integrate mailchimp

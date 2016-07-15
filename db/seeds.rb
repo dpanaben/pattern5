@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email
+
+
 sanitize1 = Sanitize.new(:match => '\s\,|\,|\,\s', :result => '，', :description => '把 , 改成全形字')
 sanitize2 = Sanitize.new(:match => '\s\(|\(|\(\s', :result => '（', :description => '把 ( 改成全形字')
 sanitize3 = Sanitize.new(:match => '\s\)|\)|\)\s', :result => '）', :description => '把 ) 改成全形字')
