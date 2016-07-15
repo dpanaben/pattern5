@@ -12,13 +12,13 @@
     <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
       <%= (t "signin") %>
     <% end %>
-    <ul class="dropdown-menu">
+    <!-- <ul class="dropdown-menu">
       <%- if devise_mapping.omniauthable? %>
         <%- resource_class.omniauth_providers.each do |provider| %>
           <li><%= link_to "#{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %></li>
         <% end -%>
       <% end -%>
-    </ul>
+    </ul> -->
   </li>
   <li><%= link_to (t "signup"), new_user_registration_path %></li>
 <% end %>
