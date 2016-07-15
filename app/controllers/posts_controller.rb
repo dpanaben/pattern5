@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.posts.all
+    current_user.admin? ? @posts = Post.all : @posts = current_user.posts
   end
 
   # GET /posts/1
@@ -85,9 +85,12 @@ class PostsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find_by(id: params[:id])
+      if current_user.admin?
+        @post = Post.find_by(id: params[:id])
+      else
+        @post = current_user.posts.find_by(id: params[:id])
+      end
       if @post.nil?
-        @posts = Post.all
         redirect_to root_url, notice: "No post was found!"
       end
     end
