@@ -35,6 +35,7 @@ en:
     version: "Versions"
     title: "Title"
     content: "Content"
+    author: "Author"
     page:
       index:
         title: "Listing Posts"
@@ -73,6 +74,7 @@ zh:
     version: "版本數"
     title: "文章主題"
     content: "文章內容"
+    author: "作者"
     page:
       index:
         title: "所有文章"

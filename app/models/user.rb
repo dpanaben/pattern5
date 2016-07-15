@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable
 
   has_many :posts
-  
+
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
      user.name = auth.info.name ||= ""  # assuming the user model has a name
@@ -21,6 +21,5 @@ class User < ApplicationRecord
   def set_default_role
     self.role ||= :user
   end
-
 
 end
