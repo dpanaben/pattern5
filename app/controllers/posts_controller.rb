@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    current_user.admin? ? @posts = Post.all : @posts = current_user.posts
+    current_user.admin? ? @posts = Post.includes(:author) : @posts = current_user.posts.includes(:author)
   end
 
   # GET /posts/1
