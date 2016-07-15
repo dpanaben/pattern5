@@ -74,6 +74,7 @@ gem 'better_errors'
 gem 'pry-rails'
 gem 'pry-rescue'
 gem 'rubocop'
+gem 'binding_of_caller'
 
 #history
 gem 'paper_trail'

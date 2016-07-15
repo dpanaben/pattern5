@@ -2,3 +2,6 @@
 <li><%= session[:locale] == 'en' ? link_to("中文版", controller: controller.controller_name, action: controller.action_name, locale: "zh") : link_to("English", controller: controller.controller_name, action: controller.action_name, locale: "en") %></li>
 <li><%= link_to (t "about"), page_path('about') %></li>
 <li><%= link_to (t "rulepanel"), sanitizes_path %></li>
+<% if current_user && current_user.admin? %>
+  <li><%= link_to (t "userpanel"), users_path %></li>
+<% end %>

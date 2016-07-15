@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   #before_update :replacesomething
 
+  belongs_to :author, class_name: "User", foreign_key: :user_id
+
   def replacesomething
     content = self.content
     patterns = Sanitize.on.select(:match, :result)
