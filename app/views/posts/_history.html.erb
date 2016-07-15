@@ -1,5 +1,5 @@
 <h1><%=(t "post.page.edit.history")%></h1>
-<% if @post.versions.size > 1 %>
+<% if @post.versions.length > 1 %>
   <h3>現在已經有<%= @post.versions.size %>個版本</h3>
     Do you want to <%= link_to 'UNDO', undo_post_path(@post), class: "btn submit", method: :post, data: { confirm: '你確定要回到前一個版本？你也只能回到前一個版本哦，你不能回到前前前前版本，就算你看到畫面上顯示目前有很多很多版本，你還是只有上一個版本。其實是新增一筆記錄，然後把上一筆記錄貼進來，很呆吧。' } %> ?
     <% @post.versions.reverse.each do |version| %>

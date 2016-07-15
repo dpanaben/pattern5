@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
-  has_many :posts
-
+  has_many :posts, dependent: :nullify
+  after_destroy :moveposttoadmin
   after_create :after_create
 
   def self.from_omniauth(auth)
@@ -22,6 +22,10 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role ||= :user
+  end
+
+  def moveposttoadmin
+    Post.all.where(user_id: nil).update_all(user_id: 1)
   end
 
   def after_create
