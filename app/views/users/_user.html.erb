@@ -14,5 +14,5 @@
   <% end %>
 </td>
 <td>
-  <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
+  <%= link_to("Delete user", user_path(user), :data => { :confirm => "After you delete this user, all the belonging posts will be transferred to ADMIN, are you sure?" }, :method => :delete, :class => 'button-xs') unless user == current_user %>
 </td>
