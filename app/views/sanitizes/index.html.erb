@@ -6,7 +6,10 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th><%=(t "sanitize.status")%></th>
+            <% if current_user && (current_user.admin? || current_user.vip?) %>
+              <th><%= (t "sanitize.id") %></th>
+              <th><%=(t "sanitize.status")%></th>
+            <% end %>
             <th><%=(t "sanitize.match")%></th>
             <th><%=(t "sanitize.result")%></th>
             <th><%=(t "sanitize.description")%></th>
@@ -17,12 +20,17 @@
           <% @sanitizes.reverse.each do |sanitize| %>
             <% if sanitize.on? %>
               <tr>
-                <td><%= link_to sanitize.status, changestatus_sanitize_path(sanitize), method: :post, data: { confirm: 'Do you want to swith the rule?' } %></td>
+                <% if current_user && (current_user.admin? || current_user.vip?) %>
+                  <td><%= sanitize.id %></td>
+                  <td><%= link_to sanitize.status, changestatus_sanitize_path(sanitize), method: :post, data: { confirm: 'Do you want to swith the rule?' } %></td>
+                <% end %>
                 <td><%= sanitize.match %></td>
                 <td><%= sanitize.result %></td>
                 <td><%= sanitize.description %></td>
-                <td><%= link_to (t "edit"), edit_sanitize_path(sanitize) %></td>
-                <td><%= link_to (t "destroy"), sanitize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if current_user && (current_user.admin? || current_user.vip?) %>
+                  <td><%= link_to (t "edit"), edit_sanitize_path(sanitize) %></td>
+                  <td><%= link_to (t "destroy"), sanitize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
               </tr>
               <% end %>
           <% end %>

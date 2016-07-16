@@ -3,11 +3,7 @@ class SanitizesController < ApplicationController
   # GET /sanitizes
   # GET /sanitizes.json
   def index
-    if current_user && (current_user.admin? || current_user.vip?)
-      @sanitizes = Sanitize.all
-    else
-      redirect_to root_url, notice: "You have to be Admin or VIP to manage the rules"
-    end
+    @sanitizes = Sanitize.all
   end
 
   # GET /sanitizes/1
@@ -74,12 +70,11 @@ class SanitizesController < ApplicationController
 
     def set_sanitize
       # @sanitize = Sanitize.find(params[:id])
-      @sanitize = Sanitize.find_by(id: params[:id])
-      if @sanitize.nil?
-        @sanitizes = Sanitize.all
-        redirect_to sanitizes_url, notice: "No pattern was found!"
+      if current_user && (current_user.admin? || current_user.vip?)
+        @sanitize = Sanitize.find_by(id: params[:id])
+      else
+        redirect_to sanitizes_url, notice: "You have to be Admin or VIP to manage the rules"
       end
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
