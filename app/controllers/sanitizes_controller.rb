@@ -6,7 +6,7 @@ class SanitizesController < ApplicationController
     if current_user && (current_user.admin? || current_user.vip?)
       @sanitizes = Sanitize.all
     else
-      redirect_to root_url
+      redirect_to root_url, notice: "You have to be Admin or VIP to manage the rules"
     end
   end
 
