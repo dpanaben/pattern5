@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :nullify
   after_destroy :moveposttoadmin
   after_create :after_create
+  after_initialize :set_default_role, :if => :new_record?
 
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -17,8 +18,6 @@ class User < ApplicationRecord
      user.email = auth.info.email ||= auth.uid + "@" + auth.provider + ".auth"
    end
   end
-
-  after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
     self.role ||= :user
