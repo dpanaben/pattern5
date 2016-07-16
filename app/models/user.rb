@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def moveposttoadmin
-    Post.all.where(user_id: nil).update_all(user_id: 1)
+    Post.all.where(user_id: nil).update_all(user_id: User.admin.first.id)
   end
 
   def after_create

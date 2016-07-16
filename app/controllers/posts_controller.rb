@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
+  #首頁依權限給資料，admin看全部，user看自己的
   def index
     current_user.admin? ? @posts = Post.includes(:author) : @posts = current_user.posts.includes(:author)
   end
@@ -55,7 +56,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
+    @post.destroy #這邊destroy之後會代dependent: :nullify把post的user_id改成admin的
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
@@ -79,11 +80,12 @@ class PostsController < ApplicationController
 
 
   private
+    #抓status = on 的規則
     def get_active_sanitize
       @sanitizes = Sanitize.on.all
     end
 
-    # Use callbacks to share common setup or constraints between actions.
+    # 如果是admin就抓全部的post，如果是其他人就只抓個人所屬的post
     def set_post
       if current_user.admin?
         @post = Post.find_by(id: params[:id])
