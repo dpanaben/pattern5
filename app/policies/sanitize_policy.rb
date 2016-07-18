@@ -1,5 +1,6 @@
 class SanitizePolicy < ApplicationPolicy
   def index?
+    return false if @current_user.nil?
     @current_user.admin? || @current_user.vip?
   end
 
