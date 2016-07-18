@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   after_action :verify_authorized
+  after_action :verify_policy_scoped, :only => :index
+
   #Pundit example
   #raise "not authorized" unless UserPolicy.new(current_user, User).index?
   def index

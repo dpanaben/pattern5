@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
   before_action :get_active_sanitize, only: [:index, :show, :brew, :result]
   after_action :verify_authorized
+  after_action :verify_policy_scoped, :only => :index
 
   # GET /posts
   # GET /posts.json
