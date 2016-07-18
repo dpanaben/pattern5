@@ -4,7 +4,7 @@
       <%= current_user.name %> <span class="caret"></span>
     <% end %>
     <ul class="dropdown-menu">
-      <% if policy(current_user).index? %>
+      <% if policy(Access).index? %>
         <li><%= link_to (t "userpanel"), users_path %></li>
       <% end %>
       <li><%= link_to (t "signout"), destroy_user_session_path, :method=>'delete' %></li>
