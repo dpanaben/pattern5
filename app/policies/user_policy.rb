@@ -1,7 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def index?
-    return false if @current_user.nil?
-    @current_user.admin?
+    false
   end
 
   def show?
@@ -15,7 +14,7 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     @current_user.admin?
   end
-  
+
   def permitted_attributes
     if @current_user.admin?
       [:role]
