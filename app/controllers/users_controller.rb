@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
-  before_action :is_admin
-
+  after_action :verify_authorized
+  #Pundit example
+  #raise "not authorized" unless UserPolicy.new(current_user, User).index?
   def index
-    @users = User.all
+    @users = policy_scope(User)
+    authorize User
   end
 
   def show
     @user = User.find(params[:id])
+    authorize @user
   end
 
   def update
     @user = User.find(params[:id])
+    authorize @user
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
@@ -20,17 +24,12 @@ class UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
+    authorize user
     user.destroy
     redirect_to users_path, :notice => "User deleted and posts moved to ADMIN."
   end
 
   private
-
-  def is_admin
-    unless current_user.admin?
-      redirect_to root_url, notice: "You are not authorized to that area."
-    end
-  end
 
   def secure_params
     params.require(:user).permit(:role)

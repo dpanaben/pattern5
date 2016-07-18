@@ -1,5 +1,7 @@
 class SanitizesController < ApplicationController
   before_action :set_sanitize, except: [:index, :new, :create]
+  after_action :verify_authorized
+
   # GET /sanitizes
   # GET /sanitizes.json
   def index
