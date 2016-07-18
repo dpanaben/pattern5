@@ -5,26 +5,31 @@ class SanitizesController < ApplicationController
   # GET /sanitizes
   # GET /sanitizes.json
   def index
-    @sanitizes = Sanitize.all
+    @sanitizes = policy_scope(Sanitize)
+    authorize Sanitize
   end
 
   # GET /sanitizes/1
   # GET /sanitizes/1.json
   def show
+    authorize @sanitize
   end
 
   # GET /sanitizes/new
   def new
     @sanitize = Sanitize.new
+    authorize @sanitize
   end
 
   # GET /sanitizes/1/edit
   def edit
+    authorize @sanitize
   end
 
   # POST /sanitizes
   # POST /sanitizes.json
   def create
+    authorize Sanitize
     @sanitize = Sanitize.new(sanitize_params)
 
     respond_to do |format|
@@ -41,6 +46,7 @@ class SanitizesController < ApplicationController
   # PATCH/PUT /sanitizes/1
   # PATCH/PUT /sanitizes/1.json
   def update
+    authorize @sanitize
     respond_to do |format|
       if @sanitize.update(sanitize_params)
         format.html { redirect_to @sanitize, notice: 'Sanitize was successfully updated.' }
@@ -55,6 +61,7 @@ class SanitizesController < ApplicationController
   # DELETE /sanitizes/1
   # DELETE /sanitizes/1.json
   def destroy
+    authorize @sanitize
     @sanitize.destroy
     respond_to do |format|
       format.html { redirect_to sanitizes_url, notice: 'Sanitize was successfully destroyed.' }
@@ -63,6 +70,7 @@ class SanitizesController < ApplicationController
   end
 
   def changestatus
+    authorize @sanitize
     @sanitize.on? ? @sanitize.off! : @sanitize.on! #如果on就off，off就on，順便save(因為有!)
     redirect_to sanitizes_url, notice: 'The rule has been turned ' + @sanitize.status.upcase + ' !!'
   end
@@ -72,11 +80,7 @@ class SanitizesController < ApplicationController
 
     def set_sanitize
       # @sanitize = Sanitize.find(params[:id])
-      if current_user && (current_user.admin? || current_user.vip?)
-        @sanitize = Sanitize.find_by(id: params[:id])
-      else
-        redirect_to sanitizes_url, notice: "You have to be Admin or VIP to manage the rules"
-      end
+      @sanitize = Sanitize.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
