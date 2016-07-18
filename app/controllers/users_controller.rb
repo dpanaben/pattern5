@@ -34,8 +34,8 @@ class UsersController < ApplicationController
   private
 
   def secure_params
-    params.require(:user).permit(:role)
-    #params.require(:user).permit(*policy(@user || User).permitted_attributes)
+    #params.require(:user).permit(:role)
+    params.require(:user).permit(*policy(@user || User).permitted_attributes)
   end
 
 end

@@ -15,6 +15,14 @@ class UserPolicy < ApplicationPolicy
   def destroy?
     @current_user.admin?
   end
+  
+  def permitted_attributes
+    if @current_user.admin?
+      [:role]
+    else
+      [:name, :email]
+    end
+  end
 
   class Scope < Scope
     attr_reader :current_user, :model
@@ -31,14 +39,5 @@ class UserPolicy < ApplicationPolicy
         model.where(id: current_user.id)
       end
     end
-
-    def permitted_attributes
-      if @current_user.admin?
-        [:role]
-      else
-        [:name, :email]
-      end
-    end
-
   end
 end
