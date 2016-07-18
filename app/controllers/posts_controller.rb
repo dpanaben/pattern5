@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   #首頁依權限給資料，admin看全部，user看自己的
   def index
-    @posts = policy_scope(Post)
-    authorize Post
+    @posts = policy_scope(Post) #@posts = UserPolicy::Scope.new(current_user, Post).resolve
+    authorize Post #raise "not authorized" unless PostPolicy.new(current_user, Post).index?
   end
 
   # GET /posts/1

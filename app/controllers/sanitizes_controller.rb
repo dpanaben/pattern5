@@ -5,8 +5,8 @@ class SanitizesController < ApplicationController
   # GET /sanitizes
   # GET /sanitizes.json
   def index
-    @sanitizes = policy_scope(Sanitize)
-    authorize Sanitize
+    @sanitizes = policy_scope(Sanitize) #@users = UserPolicy::Scope.new(current_user, User).resolve
+    authorize Sanitize #raise "not authorized" unless SanitizePolicy.new(current_user, Sanitize).index?
   end
 
   # GET /sanitizes/1

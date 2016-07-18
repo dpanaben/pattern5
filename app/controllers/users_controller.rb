@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   #Pundit example
   #raise "not authorized" unless UserPolicy.new(current_user, User).index?
   def index
-    @users = policy_scope(User)
-    authorize User
+    @users = policy_scope(User) #@users = UserPolicy::Scope.new(current_user, User).resolve
+    authorize User #raise "not authorized" unless UserPolicy.new(current_user, User).index?
   end
 
   def show
