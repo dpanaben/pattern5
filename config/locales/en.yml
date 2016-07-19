@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  home: "Home"
   signin: "Sign in"
   signout: "Sign out"
   signup: "Sign up"
@@ -62,7 +61,6 @@ en:
       new:
         title: "New Sanitize"
 zh:
-  home: "首頁"
   signin: "登入"
   signout: "登出"
   signup: "註冊"
