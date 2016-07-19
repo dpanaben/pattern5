@@ -18,7 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @posts.reverse.each do |post| %>
+          <% @posts.order(updated_at: :desc).each do |post| %>
             <tr>
               <% if current_user && current_user.admin? %>
                 <th><%= post.id %></th>
