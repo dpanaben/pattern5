@@ -6,3 +6,6 @@
     <li><%= link_to (t "rulepanel"), sanitizes_path %></li>
   <% end %>
 <% end %>
+<ul class="nav navbar-nav">
+  <%= branch_info if Rails.env.development? %>
+</ul>
