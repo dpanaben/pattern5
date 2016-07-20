@@ -1,13 +1,14 @@
 <section>
   <img src="http://placehold.it/1920x500/FFD966/6DD0F2?text=PATTERN+YOUR+TEXT">
 </section>
-<div class="grid">
+<section class="grid">
   <% @posts.order(updated_at: :desc).each do |post| %>
-  <div class="grid-item">
+  <section class="grid-item">
     <h4>作者：<%= post.author.name%></h4>
-    <p><%= simple_format(post.content) %></p>
+    <h5><%= simple_format(truncate(post.title)) %></h5>
+    <p><%= simple_format(truncate(post.content, length: 120)) %></p>
     <p>創作於：<%= post.created_at %></p>
     <p>上次更新：<%= post.updated_at %></p>
-  </div>
+  </section>
   <% end %>
-</div>
+</section>
