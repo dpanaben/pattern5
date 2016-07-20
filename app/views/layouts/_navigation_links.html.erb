@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <li><%= session[:locale] == 'en' ? link_to("中文版", controller: controller.controller_name, action: controller.action_name, locale: "zh") : link_to("English", controller: controller.controller_name, action: controller.action_name, locale: "en") %></li>
-<li><%= link_to (t "about"), page_path('_about') %></li>
 <% if current_user %>
+<li><%= link_to (t "about"), page_path('_about') %></li>
   <% if policy(Access).index? %>
     <li><%= link_to (t "rulepanel"), sanitizes_path %></li>
   <% end %>
