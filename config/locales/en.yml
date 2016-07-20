@@ -21,6 +21,7 @@
 
 en:
   home: "Home"
+  visitor: "Visitor"
   signin: "Sign in"
   signout: "Sign out"
   signup: "Sign up"
@@ -37,6 +38,7 @@ en:
     title: "Title"
     content: "Content"
     author: "Author"
+    published: "Published"
     created_at: "Created At"
     updated_at: "Updated At"
     page:
@@ -63,6 +65,7 @@ en:
         title: "New Sanitize"
 zh:
   home: "首頁"
+  visitor: "訪客頁"
   signin: "登入"
   signout: "登出"
   signup: "註冊"
@@ -79,6 +82,7 @@ zh:
     title: "文章主題"
     content: "文章內容"
     author: "作者"
+    published: "發佈"
     created_at: "建立於"
     updated_at: "上次更新"
     page:

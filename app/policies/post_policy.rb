@@ -35,6 +35,10 @@ class PostPolicy < ApplicationPolicy
     show?
   end
 
+  def publish?
+    show?
+  end
+
   class Scope < Scope
     attr_reader :current_user, :model
 

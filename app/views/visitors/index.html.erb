@@ -1,0 +1,10 @@
+<div class="grid">
+  <% @posts.order(updated_at: :desc).each do |post| %>
+  <div class="grid-item">
+    <h4>作者：<%= post.author.name%></h4>
+    <p><%= simple_format(post.content) %></p>
+    <p>創作於：<%= post.created_at %></p>
+    <p>上次更新：<%= post.updated_at %></p>
+  </div>
+  <% end %>
+</div>

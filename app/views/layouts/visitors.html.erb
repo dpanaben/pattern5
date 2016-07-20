@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Pattern" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pattern" %>">
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <%# navigation styled for Bootstrap 3.0 %>
+      <nav class="nav navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="nav navbar-nav navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to (t "home"), root_path, class: 'navbar-brand' %>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <%# add navigation links to this file %>
+              <li><%= session[:locale] == 'en' ? link_to("中文版", controller: controller.controller_name, action: controller.action_name, locale: "zh") : link_to("English", controller: controller.controller_name, action: controller.action_name, locale: "en") %></li>
+              <ul class="nav navbar-nav">
+                <%= branch_info if Rails.env.development? %>
+              </ul>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
+                    <%= (t "signin") %>
+                  <% end %>
+                </li>
+                <li><%= link_to (t "signup"), new_user_registration_path %></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <%# Rails flash messages styled for Bootstrap 3.0 %>
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= yield %>
+    </main>
+    <footer class="footer">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                <h5>Copyright @2016 Sanitize Your Text All rights reserved.</h5>
+              </div>
+              <div class="col-md-6">
+                <ul class="breadcrumb pull-right">
+                  <li><%=link_to("Github", "https://github.com/dpanaben/pattern5")%></li>
+                  <li><%=link_to("About", page_path('_about'))%></li>
+                  <li><%=link_to("Privacy", "#")%></li>
+                  <li><%=link_to("Support", "#")%></li>
+                </ul>
+              </div>
+          </div>
+      </div>
+    </footer>
+  </body>
+
+</html>

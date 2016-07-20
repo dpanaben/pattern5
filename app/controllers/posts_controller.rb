@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, except: [:index, :new, :create]
   before_action :get_active_sanitize, only: [:index, :show, :brew, :result]
   after_action :verify_authorized
@@ -87,6 +88,17 @@ class PostsController < ApplicationController
 
   def result
     authorize @post
+  end
+
+  def publish
+    authorize @post
+    if @post.yes?
+      @post.no!
+      redirect_to posts_url, notice: "The post has been archieved~~"
+    else
+      @post.yes!
+      redirect_to posts_url, notice: 'The post has been published!!'
+    end
   end
 
 

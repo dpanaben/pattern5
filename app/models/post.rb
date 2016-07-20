@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  enum publish: [:no, :yes]
   has_paper_trail
   validates :title, presence: true
   #before_update :replacesomething

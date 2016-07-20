@@ -9,6 +9,7 @@
             <% if current_user && current_user.admin? %>
               <th><%= (t "post.id") %></th>
             <% end %>
+            <th><%= (t "post.published")%></th>
             <th><%= (t "post.author")%></th>
             <th><%= (t "post.title")%></th>
             <th><%= (t "post.content")%></th>
@@ -23,6 +24,7 @@
               <% if current_user && current_user.admin? %>
                 <th><%= post.id %></th>
               <% end %>
+              <td><%= link_to post.publish, publish_post_path(post), method: :post, data: { confirm: 'Do you want to publish this post?' } %></td>
               <td><%= post.author.name%></td>
               <td><%= link_to truncate(post.title), post %></td>
               <td><%= truncate(post.content) %></td>

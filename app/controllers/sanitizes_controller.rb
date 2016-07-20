@@ -1,4 +1,5 @@
 class SanitizesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_sanitize, except: [:index, :new, :create]
   after_action :verify_authorized
   after_action :verify_policy_scoped, :only => :index
