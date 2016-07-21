@@ -57,6 +57,7 @@ gem 'foundation-rails', '~> 5.5'
 gem 'high_voltage'
 gem 'simple_form'
 gem "will_paginate"
+gem 'record_tag_helper', '~> 1.0' #for old div_for tag
 
 #user authentication
 gem 'devise' #authentication management

@@ -2,11 +2,12 @@
 
 body { font-family: sans-serif; }
 
-
 /* ---- grid ---- */
 
 .grid {
+  // background: #FFD966;
   background: #6DD0F2;
+  max-width: 1200px;
 }
 
 /* clearfix */
@@ -19,15 +20,15 @@ body { font-family: sans-serif; }
 /* ---- grid-item ---- */
 
 .grid-item {
-  // width: 160px;
-  // height: 120px;
+  width: 160px;
+  height: 120px;
   float: left;
+  // background: #6DD0F2;
   background: #FFD966;
   border: 1px dashed #333;
   border-color: hsla(0, 0%, 0%, 0.5);
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 1px;
-  max-width: 25%;
 }
 
 .grid-item--width2 { width: 320px; }
