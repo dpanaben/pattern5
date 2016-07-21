@@ -6,21 +6,21 @@
   <% @posts.order(updated_at: :desc).each do |post| %>
     <% if post.content.size > 1000 %>
       <%= div_for(post, class: "grid-item grid-item--width3 grid-item--height4") do %>
-        <strong>4作者：<%= post.author.name%></br>
+        <strong>作者：<%= post.author.name%></br>
         抬頭：<%= post.title %></br></strong>
         <%= simple_format(truncate(post.content, length: 400) { link_to "Continue", post_path(post) }) %>
         創作於：<%= post.created_at.to_s(:short)%></br>
       <% end %>
     <% elsif post.content.size > 700 %>
       <%= div_for(post, class: "grid-item grid-item--width3 grid-item--height3") do %>
-        <strong>3作者：<%= post.author.name%></br>
+        <strong>作者：<%= post.author.name%></br>
         抬頭：<%= post.title %></br></strong>
         <%= simple_format(truncate(post.content, length: 200) { link_to "Continue", post_path(post) }) %>
         創作於：<%= post.created_at.to_s(:short)%></br>
       <% end %>
     <% elsif post.content.size > 300 %>
       <%= div_for(post, class: "grid-item grid-item--width2 grid-item--height3") do %>
-        <strong>2作者：<%= post.author.name%></br>
+        <strong>作者：<%= post.author.name%></br>
         抬頭：<%= post.title %></br></strong>
         <%= simple_format(truncate(post.title)) %>
         <%= simple_format(truncate(post.content, length: 100) { link_to "Continue", post_path(post) }) %>
@@ -28,7 +28,7 @@
       <% end %>
     <% else %>
       <%= div_for(post, class: "grid-item  grid-item--height2") do %>
-        <strong>1作者：<%= post.author.name%></br>
+        <strong>作者：<%= post.author.name%></br>
         抬頭：<%= post.title %></br></strong>
         <%= simple_format(truncate(post.title)) %>
         <%= simple_format(truncate(post.content, length: 50) { link_to "Continue", post_path(post) }) %>

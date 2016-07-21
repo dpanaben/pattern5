@@ -1,9 +1,13 @@
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
 
 /* ---- grid ---- */
 
 .grid {
   // background: #FFD966;
   background: #6DD0F2;
+  counter-reset: grid-item;
 }
 
 /* clearfix */
@@ -34,3 +38,13 @@
 .grid-item--height2 { height: 200px; }
 .grid-item--height3 { height: 260px; }
 .grid-item--height4 { height: 360px; }
+
+.grid-item:before {
+  counter-increment: grid-item;
+  content: counter(grid-item);
+  display: block;
+  color: white;
+  padding-top: 0.2em;
+  text-align: center;
+  font-size: 5px;
+}
