@@ -34,12 +34,14 @@
               </ul>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <% if !current_user %>
                 <li class="dropdown">
                   <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
                     <%= (t "signin") %>
                   <% end %>
                 </li>
                 <li><%= link_to (t "signup"), new_user_registration_path %></li>
+              <% end %>
             </ul>
           </div>
         </div>
