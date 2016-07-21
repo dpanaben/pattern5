@@ -1,25 +1,60 @@
 <div class="container">
-  <h1><%=(t "sanitize.page.index.title")%></h1>
-  <%= link_to (t "sanitize.newbutton"), new_sanitize_path, :class => "btn btn-primary" %>
+  <%= link_to (t "sanitize.newbutton"), new_sanitize_path, :class => "btn btn-primary pull-right" %>
   <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <% if current_user && (current_user.admin? || current_user.vip?) %>
-              <th><%= (t "sanitize.id") %></th>
-              <th><%= (t "sanitize.cop.name") %></th>
+    <h1><%=(t "sanitize.page.index.title")%></h1>
+      <div class="column">
+        <% if @sanitizes.where(user_id: current_user.id).size > 0 %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <% if current_user && (current_user.admin? || current_user.vip?) %>
+                <th><%= (t "sanitize.id") %></th>
+                <th><%= (t "sanitize.cop.name") %></th>
+              <% end %>
+              <th><%=(t "sanitize.status")%></th>
+              <th><%=(t "sanitize.match")%></th>
+              <th><%=(t "sanitize.result")%></th>
+              <th><%=(t "sanitize.description")%></th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sanitizes.where(user_id: current_user.id).reverse.each do |sanitize| %>
+              <% if sanitize.on? %>
+                <tr>
+                  <% if current_user && (current_user.admin? || current_user.vip?) %>
+                    <td><%= sanitize.id %></td>
+                    <td><%= sanitize.cop.name %></td>
+                  <% end %>
+                  <td><%= link_to sanitize.status, changestatus_sanitize_path(sanitize), method: :post, data: { confirm: 'Do you want to swith the rule?' } %></td>
+                  <td><%= sanitize.match %></td>
+                  <td><%= sanitize.result %></td>
+                  <td><%= sanitize.description %></td>
+                  <td><%= link_to (t "edit"), edit_sanitize_path(sanitize) %></td>
+                  <td><%= link_to (t "destroy"), sanitize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+                <% end %>
             <% end %>
-            <th><%=(t "sanitize.status")%></th>
-            <th><%=(t "sanitize.match")%></th>
-            <th><%=(t "sanitize.result")%></th>
-            <th><%=(t "sanitize.description")%></th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @sanitizes.reverse.each do |sanitize| %>
-            <% if sanitize.on? %>
+          </tbody>
+        </table>
+        <% if @sanitizes.off.size > 0 %>
+        <table class="table">
+          <thead>
+            <tr>
+              <% if current_user && (current_user.admin? || current_user.vip?) %>
+                <th><%= (t "sanitize.id") %></th>
+                <th><%= (t "sanitize.cop.name") %></th>
+              <% end %>
+              <th><%=(t "sanitize.status")%></th>
+              <th><%=(t "sanitize.match")%></th>
+              <th><%=(t "sanitize.result")%></th>
+              <th><%=(t "sanitize.description")%></th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @sanitizes.where(user_id: current_user.id).reverse.each do |sanitize| %>
+            <% if sanitize.off? %>
               <tr>
                 <% if current_user && (current_user.admin? || current_user.vip?) %>
                   <td><%= sanitize.id %></td>
@@ -32,13 +67,51 @@
                 <td><%= link_to (t "edit"), edit_sanitize_path(sanitize) %></td>
                 <td><%= link_to (t "destroy"), sanitize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+        <% end %>
+
+        <% else %>
+        <h2>你現在什麼規則都沒有，不如從別人那裏抓幾個過來用吧！＝＞＞</h2>
+        <% end %>
+
+      </div>
+
+<!-- 以下為admin的規則 -->
+    <div class="column">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <% if current_user && (current_user.admin? || current_user.vip?) %>
+              <th><%= (t "sanitize.id") %></th>
+              <th><%= (t "sanitize.cop.name") %></th>
+            <% end %>
+            <th><%=(t "sanitize.takeit")%></th>
+            <th><%=(t "sanitize.match")%></th>
+            <th><%=(t "sanitize.result")%></th>
+            <th><%=(t "sanitize.description")%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sanitizes.where(user_id: User.admin.first.id).reverse.each do |sanitize| %>
+            <% if sanitize.on? %>
+              <tr>
+                <% if current_user && (current_user.admin? || current_user.vip?) %>
+                  <td><%= sanitize.id %></td>
+                  <td><%= sanitize.cop.name %></td>
+                <% end %>
+                <td><%= link_to("Takeit", takeit_sanitize_path(sanitize), method: :post) %></td>
+                <td><%= sanitize.match %></td>
+                <td><%= sanitize.result %></td>
+                <td><%= sanitize.description %></td>
+              </tr>
               <% end %>
           <% end %>
         </tbody>
       </table>
-    </div>
-<% if @sanitizes.off.size > 0 %>
-    <div class="col-md-12">
+      <% if @sanitizes.off.size > 0 %>
       <table class="table">
         <thead>
           <tr>
@@ -46,34 +119,32 @@
               <th><%= (t "sanitize.id") %></th>
               <th><%= (t "sanitize.cop.name") %></th>
             <% end %>
-            <th><%=(t "sanitize.status")%></th>
+            <th><%=(t "sanitize.takeit")%></th>
             <th><%=(t "sanitize.match")%></th>
             <th><%=(t "sanitize.result")%></th>
             <th><%=(t "sanitize.description")%></th>
-            <th colspan="2"></th>
           </tr>
         </thead>
         <tbody>
 
-        <% @sanitizes.reverse.each do |sanitize| %>
+        <% @sanitizes.where(user_id: User.admin.first.id).reverse.each do |sanitize| %>
           <% if sanitize.off? %>
             <tr>
               <% if current_user && (current_user.admin? || current_user.vip?) %>
                 <td><%= sanitize.id %></td>
                 <td><%= sanitize.cop.name %></td>
               <% end %>
-              <td><%= link_to sanitize.status, changestatus_sanitize_path(sanitize), method: :post, data: { confirm: 'Do you want to swith the rule?' } %></td>
+              <td><%= link_to("Takeit", takeit_sanitize_path(sanitize), method: :post) %></td>
               <td><%= sanitize.match %></td>
               <td><%= sanitize.result %></td>
               <td><%= sanitize.description %></td>
-              <td><%= link_to (t "edit"), edit_sanitize_path(sanitize) %></td>
-              <td><%= link_to (t "destroy"), sanitize, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         <% end %>
         </tbody>
       </table>
+      <% end %>
     </div>
-<% end %>
+
   </div>
 </div>

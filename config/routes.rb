@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sanitizes do
     member do
       post :changestatus #修改規則的on/off
+      post :takeit #從admin規則抓資料
     end
   end
 

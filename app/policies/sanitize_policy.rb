@@ -27,6 +27,10 @@ class SanitizePolicy < ApplicationPolicy
     show?
   end
 
+  def takeit?
+    true
+  end
+
   class Scope < Scope
     attr_reader :current_user, :model
 
@@ -39,7 +43,7 @@ class SanitizePolicy < ApplicationPolicy
       if current_user.admin? || current_user.vip?
         model.all
       else
-        model.where(user_id: current_user.id)
+        model.where(user_id: [current_user.id, User.admin.first.id] )
       end
     end
 

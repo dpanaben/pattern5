@@ -108,20 +108,5 @@ class User < ApplicationRecord
     　　兩個全形空白
     i am a student
     1 2 3 4 5')
-    user.sanitizes.create!(:match => '\s\,|\,|\,\s', :result => '，', :description => '把 , 改成全形字')
-    user.sanitizes.create!(:match => '\s\(|\(|\(\s', :result => '（', :description => '把 ( 改成全形字')
-    user.sanitizes.create!(:match => '\s\)|\)|\)\s', :result => '）', :description => '把 ) 改成全形字')
-    user.sanitizes.create!(:match => '\s\!|\!|\!\s', :result => '！', :description => '把 ! 改成全形字')
-    user.sanitizes.create!(:match => '\s\%|\%|\%\s', :result => '％', :description => '把 % 改成全形字')
-    user.sanitizes.create!(:match => '\s\:|\:|\:\s', :result => '：', :description => '把 : 改成全形字')
-    user.sanitizes.create!(:match => '\s\;|\;|\;\s', :result => '；', :description => '把 ; 改成全形字')
-    user.sanitizes.create!(:match => '\s\~|\~|\~\s', :result => '～', :description => '把 ~ 改成全形字')
-    user.sanitizes.create!(:match => '\s\?|\?|\?\s', :result => '？', :description => '把 ? 改成全形字')
-    user.sanitizes.create!(:match => '\.{2,}', :result => '……', :description => '連續的半形句點改成連續兩組省略號…')
-    user.sanitizes.create!(:match => '　', :result => '   ', :description => '全形空白代換成三個半形空白')
-    user.sanitizes.create!(:match => '\.$|\.\s', :result => '。', :description => '段落尾逗點改句號')
-    user.sanitizes.create!(:match => '(?<=\W)\s*\.\s*(?=\W)', :result => '。', :description => '半形點號若其前後皆非英數字時，取代成全形句號')
-    user.sanitizes.create!(:match => ' (?=\/|／|[\u4e00-\u9fa5])', :result => '', :description => '處理空白--空白後面接反斜線/英數字/中文的話就把空白去掉')
-
   end
 end

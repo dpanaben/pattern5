@@ -32,7 +32,7 @@ class SanitizesController < ApplicationController
   # POST /sanitizes.json
   def create
     authorize Sanitize
-    @sanitize = Sanitize.new(sanitize_params)
+    @sanitize = current_user.sanitizes.build(sanitize_params)
 
     respond_to do |format|
       if @sanitize.save
@@ -75,6 +75,12 @@ class SanitizesController < ApplicationController
     authorize @sanitize
     @sanitize.on? ? @sanitize.off! : @sanitize.on! #如果on就off，off就on，順便save(因為有!)
     redirect_to sanitizes_url, notice: 'The rule has been turned ' + @sanitize.status.upcase + ' !!'
+  end
+
+  def takeit
+    authorize @sanitize
+    current_user.sanitizes.create!(match: @sanitize.match, result: @sanitize.result, description: @sanitize.description)
+    redirect_to sanitizes_url, notice: 'You get one rule from Admin!'
   end
 
   private
