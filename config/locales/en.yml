@@ -52,6 +52,8 @@ en:
       new:
         title: "New Post"
   sanitize:
+    newbutton: "New Sanitize"
+    pickup: "Pick"
     status: "Status"
     match: "Match"
     result: "Result"
@@ -59,10 +61,14 @@ en:
     page:
       index:
         title: "Listing Sanitize"
+        hint: "You don't have any rule, why don't you pick up some? ==>"
       edit:
         title: "Edit Sanitize"
       new:
         title: "New Sanitize"
+    method:
+      changestatus:
+        notice: "The rule has been turned  "
 zh:
   home: "首頁"
   visitor: "訪客頁"
@@ -97,6 +103,7 @@ zh:
         title: "新文章"
   sanitize:
     newbutton: "新增刷文機"
+    pickup: "抓"
     status: "狀態"
     match: '比對規則'
     result: '變更為'
@@ -104,7 +111,11 @@ zh:
     page:
       index:
         title: "顯示刷文機"
+        hint: "你現在什麼規則都沒有，不如從別人那裏抓幾個過來用吧！＝＞＞"
       edit:
         title: "編輯刷文機"
       new:
         title: "新刷文機"
+    method:
+      changestatus:
+        notice: "規則狀態調整為 "

@@ -74,7 +74,7 @@ class SanitizesController < ApplicationController
   def changestatus
     authorize @sanitize
     @sanitize.on? ? @sanitize.off! : @sanitize.on! #如果on就off，off就on，順便save(因為有!)
-    redirect_to sanitizes_url, notice: 'The rule has been turned ' + @sanitize.status.upcase + ' !!'
+    redirect_to sanitizes_url, notice: t("sanitize.method.changestatus.notice") + @sanitize.status.upcase + ' !!'
   end
 
   def takeit
