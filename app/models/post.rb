@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   def replacesomething
     content = self.content
-    patterns = Sanitize.on.select(:match, :result)
+    patterns = current_user.sanitizes.on.select(:match, :result)
 
     patterns.each do |pattern|
       content = content.gsub( Regexp.new(pattern.match), pattern.result )

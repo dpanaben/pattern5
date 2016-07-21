@@ -1,11 +1,10 @@
 class SanitizePolicy < ApplicationPolicy
   def index?
-    return false if @current_user.nil?
-    @current_user.admin? || @current_user.vip?
+    true
   end
 
   def show?
-    index?
+    @current_user.admin? || (@model.user_id == @current_user.id)
   end
 
   def create?
@@ -39,6 +38,8 @@ class SanitizePolicy < ApplicationPolicy
     def resolve
       if current_user.admin? || current_user.vip?
         model.all
+      else
+        model.where(user_id: current_user.id)
       end
     end
 
