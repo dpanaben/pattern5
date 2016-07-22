@@ -3,9 +3,9 @@
   <table class="table">
     <thead>
       <tr>
+        <th><%=(t "sanitize.description")%></th>
         <th><%=(t "sanitize.match")%></th>
         <th><%=(t "sanitize.result")%></th>
-        <th><%=(t "sanitize.description")%></th>
       </tr>
     </thead>
 
@@ -21,4 +21,5 @@
   </table>
 <% else %>
 <h1>你還沒有建立任何的規則，不如先到<%=link_to((t "rulepanel"), sanitizes_path)%>抓幾個來用吧！<h1>
+<img src="http://lorempixel.com/640/480/cats" />
 <% end %>
