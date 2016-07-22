@@ -6,9 +6,9 @@ class Post < ApplicationRecord
 
   belongs_to :author, class_name: "User", foreign_key: :user_id
 
-  def replacesomething
+  def replacesomething(sanitizes)
     content = self.content
-    patterns = current_user.sanitizes.on.select(:match, :result)
+    patterns = sanitizes.select(:match, :result)
 
     patterns.each do |pattern|
       content = content.gsub( Regexp.new(pattern.match), pattern.result )

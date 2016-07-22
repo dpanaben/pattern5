@@ -81,7 +81,7 @@ class PostsController < ApplicationController
 
   def brew
     authorize @post
-    @post.replacesomething
+    @post.replacesomething(@sanitizes)
     @post.save
     redirect_to result_post_path, notice: 'Your post has been brewed!'
   end

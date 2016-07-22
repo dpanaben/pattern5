@@ -1,0 +1,9 @@
+<%# add nav links for auth to this file %>
+<% if !current_user %>
+  <li class="dropdown">
+    <%= link_to new_user_session_path, class: "dropdown-toggle" do %>
+      <%= (t "signin") %>
+    <% end %>
+  </li>
+  <li><%= link_to (t "signup"), new_user_registration_path %></li>
+<% end %>
