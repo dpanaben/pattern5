@@ -6,6 +6,7 @@
 img {
   @extend .img-responsive;
   margin: 0 auto;
+  border-radius: 15px;
   }
 // override for the 'Home' navigation link
 .navbar-brand {

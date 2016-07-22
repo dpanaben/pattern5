@@ -102,3 +102,4 @@ gem "fog-aws"
 
 #mailfunction
 gem 'gibbon' #Integrate mailchimp
+gem 'sucker_punch' #background job
