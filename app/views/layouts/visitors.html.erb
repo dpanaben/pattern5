@@ -26,7 +26,7 @@
 
       var $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
-        // originTop: false
+        isFitWidth: true,
       });
       $grid.on( 'click', '.grid-item', function() {
         // change size of item via class
