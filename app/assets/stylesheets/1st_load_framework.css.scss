@@ -41,12 +41,15 @@ img {
 main {
   @extend .container;
   font-family: Verdana;
-  background-color: #ffd966;
+  background-color: #eee;
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
   margin-top: 51px; // accommodate the navbar
   }
+main.visitor{
+  background-color: #ffd966;
+}
 section {
   @extend .row;
   margin-top: 20px;
