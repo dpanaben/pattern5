@@ -27,5 +27,5 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'posts#index', as: :authenticated_root
   end
-  root to: 'visitors#index'
+  root to: 'visitors#new'
 end

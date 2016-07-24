@@ -1,0 +1,31 @@
+<div>
+  <img src="http://placehold.it/1920x500/FFD966/6DD0F2?text=PATTERN+YOUR+TEXT">
+</div>
+
+<div class="grid">
+  <% @posts.order(updated_at: :desc).each do |post| %>
+    <div class="grid-item">
+      <strong>作者：<%= post.author.name%></br>
+      抬頭：<%= post.title %></br></strong>
+      <%= simple_format(truncate(post.content, length: 180) { link_to "Continue", post_path(post) }) %>
+      創作於：<%= post.created_at.to_s(:short)%></br>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <div class="column">
+  </div>
+  <div class="column">
+    <h3>Stay in touch</h3>
+    <div class="form-inputs">
+      <%= simple_form_for @visitor do |f| %>
+        <%= f.error_notification %>
+        <%= f.hidden_field :affinity %>
+        <%= f.hidden_field :referrer %>
+        <%= f.input :email, label: false, placeholder: 'Your email address...' %>
+        <%= f.button :submit, "Sign up for the mailing list", class: "submit pull-right" %>
+      <% end %>
+    </div>
+  </div>
+</div>

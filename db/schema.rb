@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721080738) do
+ActiveRecord::Schema.define(version: 20160723133740) do
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -72,6 +72,14 @@ ActiveRecord::Schema.define(version: 20160721080738) do
     t.text     "object_changes", limit: 1073741823
     t.datetime "created_at"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+  end
+
+  create_table "visitors", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "affinity"
+    t.string   "referrer"
   end
 
 end
