@@ -39,3 +39,16 @@
   border-color: white;
   cursor: pointer;
 }
+/* position stamp elements with CSS */
+.stamp {
+  /*position: absolute;*/
+  background: orange;
+  border: 1px dotted black;
+}
+.stamp1 {
+  /*left: 30%;*/
+  /*top: 10px;*/
+  width: 270px;
+  height: 270px;
+  margin-bottom: 80px;
+}
