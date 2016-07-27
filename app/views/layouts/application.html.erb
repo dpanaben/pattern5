@@ -6,6 +6,8 @@
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Pattern Your Text" %>">
 
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= favicon_link_tag 'favicon.ico' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
