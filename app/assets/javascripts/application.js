@@ -15,6 +15,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require masonry.pkgd.min
-//= require chessboard.min
-//= require chess.min
+//= require chessboard
+//= require chess
 //= require_tree .

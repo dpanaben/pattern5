@@ -24,4 +24,4 @@ App.game = App.cable.subscriptions.create "GameChannel",
         @printMessage("Opponent forfeits. You win!")
 
   printMessage: (message) ->
-    $("#messages").append("<p>#{message}</p>")
+    $("#messages").append("<div>#{message}</div>")

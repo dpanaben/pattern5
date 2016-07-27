@@ -30,7 +30,7 @@
   text-align: center;
   font-size: 5px;
 }
-.grid-item--gigante {
+/*.grid-item--gigante {
   width: 360px;
   height: auto;
 }
@@ -38,17 +38,17 @@
   background: #EEBA4C;
   border-color: white;
   cursor: pointer;
-}
+}*/
 /* position stamp elements with CSS */
 .stamp {
-  /*position: absolute;*/
+  position: absolute;
   background: orange;
   border: 1px dotted black;
 }
 .stamp1 {
-  /*left: 30%;*/
-  /*top: 10px;*/
+  left: 10px;
+  top: 10px;
   width: 270px;
   height: 270px;
-  margin-bottom: 80px;
+  margin-bottom: 90px;
 }

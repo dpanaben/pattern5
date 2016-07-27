@@ -5,6 +5,7 @@ $ ->
     draggable: true
     pieceTheme: "/assets/chesspieces/alpha/{piece}.png"
     showNotation: false
+    showErrors: false
 
     onDragStart: (source, piece, position, orientation) =>
       # make sure the player is allowed to pick up the piece
