@@ -94,5 +94,6 @@ Rails.application.configure do
     user_name: Rails.application.secrets.email_provider_username,
     password: Rails.application.secrets.email_provider_password
   }
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
 end
