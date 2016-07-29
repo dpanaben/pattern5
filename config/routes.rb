@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
+  resources :portfolios do
+    resources :sanitizes do
+      member do
+        post :changestatus #修改規則的on/off
+        post :takeit #從admin規則抓資料
+      end
+    end
+  end
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions' }
   resources :visitors
   resources :users
-  resources :sanitizes do
-    member do
-      post :changestatus #修改規則的on/off
-      post :takeit #從admin規則抓資料
-    end
-  end
 
   resources :posts do
     member do

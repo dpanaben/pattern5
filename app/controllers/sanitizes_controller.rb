@@ -1,46 +1,30 @@
 class SanitizesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_sanitize, except: [:index, :new, :create]
-  after_action :verify_authorized
-  after_action :verify_policy_scoped, :only => :index
+  before_action :set_portfolio
 
-  # GET /sanitizes
-  # GET /sanitizes.json
-  def index
-    @sanitizes = policy_scope(Sanitize) #@users = UserPolicy::Scope.new(current_user, User).resolve
-    authorize Sanitize #raise "not authorized" unless SanitizePolicy.new(current_user, Sanitize).index?
-  end
-
-  # GET /sanitizes/1
-  # GET /sanitizes/1.json
-  def show
-    authorize @sanitize
-  end
 
   # GET /sanitizes/new
   def new
-    @sanitize = Sanitize.new
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.new
   end
 
   # GET /sanitizes/1/edit
   def edit
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.find(params[:id])
   end
 
   # POST /sanitizes
   # POST /sanitizes.json
   def create
-    authorize Sanitize
-    @sanitize = current_user.sanitizes.build(sanitize_params)
+    @sanitize = @portfolio.sanitizes.build(sanitize_params)
 
     respond_to do |format|
       if @sanitize.save
-        format.html { redirect_to @sanitize, notice: 'Sanitize was successfully created.' }
+        format.html { redirect_to @portfolio, notice: 'Sanitize was successfully created.' }
         format.json { render :show, status: :created, location: @sanitize }
       else
         format.html { render :new }
-        format.json { render json: @sanitize.errors, status: :unprocessable_entity }
+        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,14 +32,14 @@ class SanitizesController < ApplicationController
   # PATCH/PUT /sanitizes/1
   # PATCH/PUT /sanitizes/1.json
   def update
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.find(params[:id])
     respond_to do |format|
       if @sanitize.update(sanitize_params)
-        format.html { redirect_to @sanitize, notice: 'Sanitize was successfully updated.' }
+        format.html { redirect_to @portfolio, notice: 'Sanitize was successfully updated.' }
         format.json { render :show, status: :ok, location: @sanitize }
       else
         format.html { render :edit }
-        format.json { render json: @sanitize.errors, status: :unprocessable_entity }
+        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,32 +47,30 @@ class SanitizesController < ApplicationController
   # DELETE /sanitizes/1
   # DELETE /sanitizes/1.json
   def destroy
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.find(params[:id])
     @sanitize.destroy
     respond_to do |format|
-      format.html { redirect_to sanitizes_url, notice: 'Sanitize was successfully destroyed.' }
+      format.html { redirect_to @portfolio, notice: 'Sanitize was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def changestatus
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.find(params[:id])
     @sanitize.on? ? @sanitize.off! : @sanitize.on! #如果on就off，off就on，順便save(因為有!)
-    redirect_to sanitizes_url, notice: t("sanitize.method.changestatus.notice") + @sanitize.status.upcase + ' !!'
+    redirect_to @portfolio, notice: t("sanitize.method.changestatus.notice") + @sanitize.status.upcase + ' !!'
   end
 
   def takeit
-    authorize @sanitize
+    @sanitize = @portfolio.sanitizes.find(params[:id])
     current_user.sanitizes.create!(match: @sanitize.match, result: @sanitize.result, description: @sanitize.description)
-    redirect_to sanitizes_url, notice: 'You get one rule from Admin!'
+    redirect_to @portfolio, notice: 'You get one rule from Admin!'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-
-    def set_sanitize
-      # @sanitize = Sanitize.find(params[:id])
-      @sanitize = Sanitize.find_by(id: params[:id])
+    def set_portfolio
+      @portfolio = Portfolio.find(params[:portfolio_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

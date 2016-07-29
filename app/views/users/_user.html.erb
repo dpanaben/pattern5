@@ -11,7 +11,10 @@
   Posts: <%= user.posts.size %>
 </td>
 <td>
-  Rules: <%= user.sanitizes.size %>
+  Portfolio: <%= user.portfolios.size %>
+</td>
+<td>
+  Rules: <%= user.sanitizes.count %>
 </td>
 <td>
   <%= form_for(user) do |f| %>

@@ -7,7 +7,8 @@ class User < ApplicationRecord
          :omniauthable
 
   has_many :posts, dependent: :nullify
-  has_many :sanitizes, dependent: :nullify
+  has_many :portfolios, dependent: :nullify
+  has_many :sanitizes, through: :portfolios
   after_destroy :moveposttoadmin
   after_create :after_create
   after_initialize :set_default_role, :if => :new_record?

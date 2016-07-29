@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <%= link_to 'New Portfolio', new_portfolio_path, class: "btn btn-primary pull-right" %>
+      <h1>Portfolios</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Rules</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @portfolios.each do |portfolio| %>
+            <tr>
+              <td><%= link_to(portfolio.name, portfolio) %></td>
+              <td><%= portfolio.description %></td>
+              <td><%= portfolio.sanitizes.size %></td>
+              <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
+              <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="column">
+    </div>
+  </div>
+</div>

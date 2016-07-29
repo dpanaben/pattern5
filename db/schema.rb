@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160723133740) do
+ActiveRecord::Schema.define(version: 20160727092136) do
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -26,11 +34,10 @@ ActiveRecord::Schema.define(version: 20160723133740) do
     t.string   "match"
     t.string   "result"
     t.text     "description"
-    t.integer  "status",      default: 1
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_sanitizes_on_user_id"
+    t.integer  "status",       default: 1
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "portfolio_id"
   end
 
   create_table "users", force: :cascade do |t|

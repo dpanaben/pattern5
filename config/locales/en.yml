@@ -25,7 +25,7 @@ en:
   signin: "Sign in"
   signout: "Sign out"
   signup: "Sign up"
-  rulepanel: "Rules"
+  portfoliopanel: "Portfolio"
   userpanel: "Users"
   about: "About"
   brew: "BREW"
@@ -52,7 +52,7 @@ en:
       new:
         title: "New Post"
   sanitize:
-    newbutton: "New Sanitize"
+    newbutton: "New Rule"
     pickup: "Pick"
     status: "Status"
     match: "Match"
@@ -60,7 +60,7 @@ en:
     description: "Description"
     page:
       index:
-        title: "Listing Sanitize"
+        title: "Listing Rules"
         hint: "You don't have any rule, why don't you pick up some? ==>"
       edit:
         title: "Edit Sanitize"
@@ -75,7 +75,7 @@ zh:
   signin: "登入"
   signout: "登出"
   signup: "註冊"
-  rulepanel: "規則管理"
+  portfoliopanel: "法典管理"
   userpanel: "使用者管理"
   about: "關於這裏"
   brew: "洗文章囉!"
@@ -102,7 +102,7 @@ zh:
       new:
         title: "新文章"
   sanitize:
-    newbutton: "新增刷文機"
+    newbutton: "新增規則"
     pickup: "抓"
     status: "狀態"
     match: '比對規則'
@@ -110,7 +110,7 @@ zh:
     description: '規則說明'
     page:
       index:
-        title: "顯示刷文機"
+        title: "顯示規則"
         hint: "你現在什麼規則都沒有，不如從別人那裏抓幾個過來用吧！＝＞＞"
       edit:
         title: "編輯刷文機"
