@@ -1,29 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="column">
-      <%= link_to 'New Portfolio', new_portfolio_path, class: "btn btn-primary pull-right" %>
-      <h1>Portfolios</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Rules</th>
-            <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @portfolios.each do |portfolio| %>
+      <%= link_to (t 'portfolio.newbutton'), new_portfolio_path, class: "btn btn-primary pull-right" %>
+      <h1><%=(t 'portfolio.page.index.title')%></h1>
+      <% if @portfolios.size > 0 %>
+        <table class="table">
+          <thead>
             <tr>
-              <td><%= link_to(portfolio.name, portfolio) %></td>
-              <td><%= portfolio.description %></td>
-              <td><%= portfolio.sanitizes.size %></td>
-              <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
-              <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th><%=(t 'portfolio.name')%></th>
+              <th><%=(t 'portfolio.description')%></th>
+              <th><%=(t 'portfolio.rules')%></th>
+              <th colspan="2"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @portfolios.each do |portfolio| %>
+              <tr>
+                <td><%= link_to(portfolio.name, portfolio) %></td>
+                <td><%= portfolio.description %></td>
+                <td><%= portfolio.sanitizes.size %></td>
+                <td><%= link_to (t 'edit'), edit_portfolio_path(portfolio) %></td>
+                <td><%= link_to (t 'destroy'), portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h2><%=(t 'portfolio.page.index.hint')%></h2>
+      <% end %>
     </div>
     <div class="column">
     </div>

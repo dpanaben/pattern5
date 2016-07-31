@@ -63,12 +63,25 @@ en:
         title: "Listing Rules"
         hint: "You don't have any rule, why don't you pick up some? ==>"
       edit:
-        title: "Edit Sanitize"
+        title: "Edit Rule"
       new:
-        title: "New Sanitize"
+        title: "New Rule"
     method:
       changestatus:
         notice: "The rule has been turned  "
+  portfolio:
+    newbutton: "New Portfolio"
+    name: "Name"
+    description: "Description"
+    rules: "Rules"
+    page:
+      index:
+        title: "Listing Portfolio"
+        hint: "You don't have any portfolio, why don't you create one?"
+      edit:
+        title: "Edit Portfolio"
+      new:
+        title: "New Portfolio"
 zh:
   home: "首頁"
   visitor: "訪客頁"
@@ -113,9 +126,22 @@ zh:
         title: "顯示規則"
         hint: "你現在什麼規則都沒有，不如從別人那裏抓幾個過來用吧！＝＞＞"
       edit:
-        title: "編輯刷文機"
+        title: "編輯規則"
       new:
-        title: "新刷文機"
+        title: "新增規則"
     method:
       changestatus:
         notice: "規則狀態調整為 "
+  portfolio:
+    newbutton: "新增法典"
+    name: "名稱"
+    description: "法典內容"
+    rules: "規則數"
+    page:
+      index:
+        title: "所有法典"
+        hint: "你沒有任何法典，不如現在就建立一個。"
+      edit:
+        title: "編輯法典"
+      new:
+        title: "新增法典"

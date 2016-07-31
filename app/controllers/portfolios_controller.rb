@@ -11,6 +11,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios/1.json
   def show
     @sanitizes = @portfolio.sanitizes
+    @adminsanitizes = User.first.sanitizes
   end
 
   # GET /portfolios/new

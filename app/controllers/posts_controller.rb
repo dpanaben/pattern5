@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, except: [:index, :new, :create]
-  before_action :getmyactivesanitize, only: [:index, :show, :brew, :result]
   after_action :verify_authorized
   after_action :verify_policy_scoped, :only => :index
 
@@ -103,9 +102,7 @@ class PostsController < ApplicationController
 
 
   private
-    #抓status = on 的規則
-    def getmyactivesanitize
-      @sanitizes = current_user.sanitizes.on.all
+    def getmyactiveportfolio
     end
 
     # 如果是admin就抓全部的post，如果是其他人就只抓個人所屬的post

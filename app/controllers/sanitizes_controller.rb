@@ -62,8 +62,8 @@ class SanitizesController < ApplicationController
   end
 
   def takeit
-    @sanitize = @portfolio.sanitizes.find(params[:id])
-    current_user.sanitizes.create!(match: @sanitize.match, result: @sanitize.result, description: @sanitize.description)
+    @adminsanitize = Sanitize.find(params[:id])
+    @portfolio.sanitizes.create!(match: @adminsanitize.match, result: @adminsanitize.result, description: @adminsanitize.description)
     redirect_to @portfolio, notice: 'You get one rule from Admin!'
   end
 

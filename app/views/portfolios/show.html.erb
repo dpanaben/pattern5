@@ -1,3 +1,11 @@
 <h1><%= @portfolio.name %></h1>
-
-<%= render 'sanitizes/index'%>
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <%= render 'sanitizes/index'%>
+    </div>
+    <div class="column">
+      <%= render 'sanitizes/admin'%>
+    </div>
+  </div>
+</div>
