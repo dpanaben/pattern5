@@ -4,22 +4,18 @@
   <thead>
     <tr>
       <th><%=(t "sanitize.pickup")%></th>
-      <th>Portfolio ID</th>
-      <th>Rule ID</th>
+      <th><%=(t "sanitize.description")%></th>
       <th><%=(t "sanitize.match")%></th>
       <th><%=(t "sanitize.result")%></th>
-      <th><%=(t "sanitize.description")%></th>
     </tr>
   </thead>
   <tbody>
     <% @adminsanitizes.each do |f| %>
       <tr>
         <td><%= link_to (t "sanitize.pickup"), takeit_portfolio_sanitize_path(@portfolio, f), method: :post %></td>
-        <td><%= f.portfolio.id %></td>
-        <td><%= f.id %></td>
+        <td><%= f.description %></td>
         <td><%= f.match %></td>
         <td><%= f.result %></td>
-        <td><%= f.description %></td>
       </tr>
     <% end %>
   </tbody>
