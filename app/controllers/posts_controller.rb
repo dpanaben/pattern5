@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, except: [:index, :new, :create]
   after_action :verify_authorized
   after_action :verify_policy_scoped, :only => :index
-  before_action :getmyactivesanitize, only: [:index, :show, :brew, :result]
+  before_action :getmyactivesanitize, only: [:show, :brew, :result]
 
   # GET /posts
   # GET /posts.json
@@ -105,7 +105,9 @@ class PostsController < ApplicationController
   private
     def getmyactivesanitize
       @portfolio = current_user.portfolios.first
-      @sanitizes = @portfolio.sanitizes.on.all
+      if @portfolio != nil
+        @sanitizes = @portfolio.sanitizes.on.all
+      end
     end
 
     # 如果是admin就抓全部的post，如果是其他人就只抓個人所屬的post
