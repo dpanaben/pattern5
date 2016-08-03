@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   def after_create
     user = User.last
+    portfolio1 = user.portfolios.create!(name: 'First Portfolio', description: 'First Portfolio')
     user.posts.create!(title: 'FortiWeb-1000C與3000C', content: '
      
     FortiWeb-1000C與3000C, 採用最新的FortiWeb 4.0 MR1系統韌體, 能提供更佳的部署彈性與安全性。
@@ -44,7 +45,7 @@ class User < ApplicationRecord
      
     	FortiWeb-1000C和FortiWeb-3000C整合了Web應用程式和XML防火牆 ,能抵禦針對Web應用程式與Web服務架構的攻擊。由於FortiWeb能將企業整體威脅 ,視覺化精細地呈現,因此不需要分別管理Web與其它威脅的工具和控制台。如此不僅簡化了安全管理,同時也降低管理架構的複雜性,能大幅減少保護資料以符管理規範所需的時間。
      
-    ')
+    ', portfolio_id: portfolio1.id)
 
     user.posts.create!(title: '這是用來測試. ', content: '這是用來測試.
     不過全形空白如果都去掉,有可能會造成文章段落中的小標題出錯.例如下一行中間是個全形空白.
@@ -68,7 +69,7 @@ class User < ApplicationRecord
 
     傷腦筋的是有些前後是一個中文一個英文的 , 這種通常是要用半形斜線,例如:
     傳輸速率高達10 MB/秒
-    但原稿可能是「10 MB/秒」(還空一格!?)所以要改為半形 ')
+    但原稿可能是「10 MB/秒」(還空一格!?)所以要改為半形 ', portfolio_id: portfolio1.id)
 
     user.posts.create!(title: '引號很難搞', content: '引號很難搞，因為如果是巢狀引號，很難判別究竟是誰包著誰。
 
@@ -90,7 +91,7 @@ class User < ApplicationRecord
     例如：
     “更厲害的來了，還有全形的喔！而且兩個不一樣，前面是“上引號”，後一個是“下引號”。”
     應該變成：
-    「更厲害的來了，還有全形的喔！而且兩個不一樣，前面是『上引號』，後一個是『下引號』。」')
+    「更厲害的來了，還有全形的喔！而且兩個不一樣，前面是『上引號』，後一個是『下引號』。」', portfolio_id: portfolio1.id)
 
     user.posts.create!(title: ', ( ) ! / % : ; ~ ?', content: ', ( ) ! / % : ; ~ ?
     , ( ) ! / % : ; ~ ?
@@ -108,6 +109,6 @@ class User < ApplicationRecord
     　一個全形空白
     　　兩個全形空白
     i am a student
-    1 2 3 4 5')
+    1 2 3 4 5', portfolio_id: portfolio1.id)
   end
 end
