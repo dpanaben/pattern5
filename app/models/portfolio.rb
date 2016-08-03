@@ -1,5 +1,6 @@
 class Portfolio < ApplicationRecord
   has_many :sanitizes, dependent: :nullify
+  has_many :posts
   after_create :after_create
 
   def after_create

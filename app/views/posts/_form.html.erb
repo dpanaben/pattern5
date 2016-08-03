@@ -6,6 +6,7 @@
   </div>
 
   <div class="form-inputs">
+    <%= f.association :portfolio, collection: current_user.portfolios, as: :radio_buttons %>
     <%= f.input :title %>
     <%= f.input :content, :input_html => { :rows => 20 } %>
   </div>

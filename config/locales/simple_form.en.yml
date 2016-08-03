@@ -11,6 +11,7 @@ en:
     models:
       post: 'Post'
       sanitize: 'Rule'
+      portfolio: 'Portfolio'
     attributes:
       post:
         title: 'Title'
@@ -20,6 +21,9 @@ en:
         match: 'Match'
         result: 'Result'
         description: 'Description'
+      portfolio:
+        name: 'Portfolio name'
+        description: 'Portfolio description'
     errors:
       models:
         post:
@@ -75,6 +79,7 @@ zh:
     models:
       post: '文章'
       sanitize: '規則'
+      portfolio: '法典'
     attributes:
       post:
         title: '主題'
@@ -84,6 +89,9 @@ zh:
         match: '比對規則'
         result: '變更為'
         description: '規則說明'
+      portfolio:
+        name: '法典名稱'
+        description: '法典內容'
     errors:
       models:
         post:

@@ -104,7 +104,7 @@ class PostsController < ApplicationController
 
   private
     def getmyactivesanitize
-      @portfolio = current_user.portfolios.first
+      @portfolio = @post.portfolio
       if @portfolio != nil
         @sanitizes = @portfolio.sanitizes.on.all
       end
@@ -117,6 +117,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :portfolio_id)
     end
 end

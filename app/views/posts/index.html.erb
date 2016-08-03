@@ -13,6 +13,7 @@
             <th><%= (t "post.author")%></th>
             <th><%= (t "post.title")%></th>
             <th><%= (t "post.content")%></th>
+            <th><%= (t "post.portfolio")%></th>
             <th><%= (t "post.created_at")%></th>
             <th><%= (t "post.updated_at")%></th>
             <th colspan="2"></th>
@@ -28,6 +29,7 @@
               <td><%= post.author.name%></td>
               <td><%= link_to truncate(post.title), post %></td>
               <td><%= truncate(post.content) %></td>
+              <td><%= post.portfolio ? post.portfolio.name : "" %></td>
               <td><%= post.created_at.to_s(:short) %></td>
               <td><%= post.updated_at.to_s(:short) %></td>
               <td><%= link_to (t "edit"), edit_post_path(post) %></td>
