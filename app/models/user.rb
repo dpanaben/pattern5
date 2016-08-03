@@ -33,6 +33,8 @@ class User < ApplicationRecord
     user = User.last
     if user.user?
       portfolio1 = user.portfolios.create!(name: 'First Portfolio', description: 'First Portfolio')
+    else
+      portfolio1 = user.portfolios.first
     end
     user.posts.create!(title: 'FortiWeb-1000C與3000C', content: '
      
