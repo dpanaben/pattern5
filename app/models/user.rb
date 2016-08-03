@@ -31,7 +31,9 @@ class User < ApplicationRecord
 
   def after_create
     user = User.last
-    portfolio1 = user.portfolios.create!(name: 'First Portfolio', description: 'First Portfolio')
+    if user.user?
+      portfolio1 = user.portfolios.create!(name: 'First Portfolio', description: 'First Portfolio')
+    end
     user.posts.create!(title: 'FortiWeb-1000C與3000C', content: '
      
     FortiWeb-1000C與3000C, 採用最新的FortiWeb 4.0 MR1系統韌體, 能提供更佳的部署彈性與安全性。

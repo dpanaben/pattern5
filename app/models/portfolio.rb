@@ -4,6 +4,8 @@ class Portfolio < ApplicationRecord
   after_create :after_create
 
   def after_create
-    self.sanitizes.create!(:match => '\s\,|\,|\,\s', :result => '，', :description => '把 , 改成全形符號')
+    if self.user?
+      self.sanitizes.create!(:match => '\s\,|\,|\,\s', :result => '，', :description => '把 , 改成全形符號')
+    end
   end
 end
