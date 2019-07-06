@@ -365,7 +365,7 @@ DEPENDENCIES
   pg
   pry-rails
   pry-rescue
-  puma (~> 3.0)
+  puma
   pundit
   rack-mini-profiler
   rails (~> 5.0.0)
@@ -392,4 +392,4 @@ DEPENDENCIES
   xmpp4r
 
 BUNDLED WITH
-   1.12.5
+   1.17.3
