@@ -75,6 +75,7 @@ gem "omniauth-facebook"
 gem 'omniauth-twitter'
 gem 'omniauth-tumblr'
 gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 
 #debug
 gem 'better_errors'
